@@ -1,22 +1,19 @@
 // Variables
 var diceString = "images/dice";
 var pngString = ".png";
-var diceLimit = 7;
+var diceLimit = 6;
 var randomNumberIterator = 7;
 var draw = "draw";
-var player1Won = "Player 1 Won";
-var player2Won = "Player 2 Won";
+var player1Won = "🚩 Player 1 Won";
+var player2Won = "Player 2 Won 🚩";
 
 //functions
 function getRandomDiceRoll(){
   var randomDiceRoll;
   for (var i = 0; i < randomNumberIterator; i++) {
-    randomDiceRoll = Math.floor(Math.random() * diceLimit);
-    if (randomDiceRoll === 0) {
-        randomDiceRoll++;
-    }
+    randomDiceRoll = Math.floor(Math.random() * diceLimit) + 1;
+    return randomDiceRoll;
   }
-  return randomDiceRoll;
 }
 
 function checkIfPlayer1Won(dice1, dice2){
@@ -32,7 +29,7 @@ function checkIfPlayer1Won(dice1, dice2){
 function manipulateHTML(dice1, dice2){
   var value = checkIfPlayer1Won(dice1, dice2);
   if (value === draw) {
-     changeHeader("Its a draw");
+     changeHeader("🚩 Its a draw 🚩");
   }else if (value === true) {
     changeHeader(player1Won);
   }else if (value === false) {

@@ -7,6 +7,8 @@ var draw = "draw";
 var player1Won = "🚩 Player 1 Won";
 var player2Won = "Player 2 Won 🚩";
 
+
+
 //functions
 function getRandomDiceRoll(){
   var randomDiceRoll;
@@ -25,6 +27,8 @@ function checkIfPlayer1Won(dice1, dice2){
     return draw;
   }
 }
+
+
 
 function manipulateHTML(dice1, dice2){
   var value = checkIfPlayer1Won(dice1, dice2);
@@ -53,14 +57,24 @@ function changeDiceImage(location1, location2){
   .setAttribute("src", location2);
 }
 
+
+
 //main function flow
-var dice1Value = getRandomDiceRoll();
-var dice2Value = getRandomDiceRoll();
-var diceLocationStringArray = [(diceString + dice1Value + pngString),
-(diceString + dice2Value + pngString)];
+function main(){
+  var dice1Value = getRandomDiceRoll();
+  var dice2Value = getRandomDiceRoll();
+  var diceLocationStringArray = [(diceString + dice1Value + pngString),
+  (diceString + dice2Value + pngString)];
 
 
 
 
-changeDiceImage(diceLocationStringArray[0], diceLocationStringArray[1]);
-manipulateHTML(dice1Value, dice2Value);
+  changeDiceImage(diceLocationStringArray[0], diceLocationStringArray[1]);
+  manipulateHTML(dice1Value, dice2Value);
+}
+
+main();
+
+document.getElementById("refresh-btn").addEventListener("click", function(){
+ main();
+});
